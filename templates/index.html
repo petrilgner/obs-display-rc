@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Nastavení TV Monitoru</h1>
+
+    <p><strong>Poslední přepnutí: </strong> {{ last_switch }}</p>
+    <div class="row row-cols-4 scenes">
+        {% for key, scene in scenes.items() %}
+
+            <a href="{{ url_for('scene_switch', scene=key) }}"
+               class="{{ scene['style'] }}{% if current==key %} active{% endif %} ">
+                <h2>{{ scene['name'] }}</h2>
+            </a>
+        {% endfor %}
+    </div>
+
+{% endblock %}
